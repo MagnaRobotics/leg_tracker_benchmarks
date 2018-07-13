@@ -26,6 +26,7 @@ find_package(catkin REQUIRED COMPONENTS
   people_tracking_filter
   image_geometry
   dynamic_reconfigure
+  leg_tracker
 )
 
 ## dynamic reconfigure config
@@ -50,6 +51,7 @@ add_executable(leg_detector
 ## Add cmake target dependencies of the executable/library
 add_dependencies(leg_detector people_msgs_gencpp ${${PROJECT_NAME}_EXPORTED_TARGETS})
 
+add_dependencies(leg_detector ${catkin_EXPORTED_TARGETS})
 ## Specify libraries to link a library or executable target against
 target_link_libraries(leg_detector
    ${catkin_LIBRARIES} ${BFL_LIBRARIES} ${BULLET_LIBRARIES}
