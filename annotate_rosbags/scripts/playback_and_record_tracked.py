@@ -55,9 +55,9 @@ class PlayBackAndRecordTracked:
             rospy.logerr("readbag_filename, savebag_filename or scan_topic not provided in parameters")
 
         # Publisher to view messages from rosbag in Rviz
-        self.laser_pub = rospy.Publisher(self.scan_topic, LaserScan)     
-        self.tf_pub = rospy.Publisher("tf", tfMessage)
-        self.marker_pub = rospy.Publisher("visualization_marker", Marker)
+        self.laser_pub = rospy.Publisher(self.scan_topic, LaserScan,queue_size=1)
+        self.tf_pub = rospy.Publisher("tf", tfMessage,queue_size=1)
+        self.marker_pub = rospy.Publisher("visualization_marker", Marker,queue_size=1)
 
         # Open the bag file to be annotated
         self.readbag = rosbag.Bag(self.readbag_filename) 
